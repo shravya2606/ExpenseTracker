@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class AddTransactionActivity extends AppCompatActivity {
@@ -92,7 +93,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 transactions.put("type", type);
                 transactions.put("date", currentDateAndTime);
                 /*for storing data on firebase*/
-                fStore.collection("Expenses").document(firebaseAuth.getUid()).collection("Notes").document(id)
+                fStore.collection("Expenses").document(Objects.requireNonNull(firebaseAuth.getUid())).collection("Notes").document(id)
                         .set(transactions)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
